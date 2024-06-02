@@ -16,6 +16,11 @@ class DatabaseOperations
         $this->connection = $conn;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Get Jobs
+    |--------------------------------------------------------------------------
+    */
     public function getJobs($table, $relations = [], $conditions = [])
     {
         $sql = "SELECT job.*, company.location 
@@ -36,6 +41,11 @@ class DatabaseOperations
         return $this->executeQuery($sql);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Find Job By ID
+    |--------------------------------------------------------------------------
+    */
     public function findJobById($id)
     {
         $sql = "SELECT job_postings.*, 
@@ -54,6 +64,11 @@ class DatabaseOperations
         return $result->fetch_assoc();
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Validate Form Data
+    |--------------------------------------------------------------------------
+    */
     public function validateFormData($data)
     {
         $rules = [
@@ -70,6 +85,11 @@ class DatabaseOperations
         return $this->validateRequestData($data, $rules);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Save Job
+    |--------------------------------------------------------------------------
+    */
     public function saveJob($title, $description, $salary, $type, $category, $image, $requirement_title, $requirement_description, $userId, $companyID, $id = null)
     {
         $imagePath = $this->UploadFiles($image['tmp_name'], $image['name'], 'image');
@@ -120,6 +140,11 @@ class DatabaseOperations
         exit;
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Delete Job
+    |--------------------------------------------------------------------------
+    */
     public function deleteJob($table, $id)
     {
         $sql = "DELETE FROM $table WHERE id = $id";
@@ -131,7 +156,13 @@ $databaseOperations = new DatabaseOperations($conn);
 $error_messages = [];
 $result = null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*
+|--------------------------------------------------------------------------
+| Handle POST Request
+|--------------------------------------------------------------------------
+*/
+function handlePostRequest($databaseOperations, $conn)
+{
     $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
     $queryCompanyID = "SELECT id FROM companies WHERE user_id = ?";
@@ -172,42 +203,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if (isset($_GET['jobId'])) {
-    $jobId = $_GET['jobId'];
-    $jobData = $databaseOperations->findJobById($jobId);
+/*
+|--------------------------------------------------------------------------
+| Handle GET Job by ID
+|--------------------------------------------------------------------------
+*/
+function handleGetJobById($databaseOperations)
+{
+    if (isset($_GET['jobId'])) {
+        $jobId = $_GET['jobId'];
+        return $databaseOperations->findJobById($jobId);
+    }
+    return null;
 }
 
-if (isset($_GET['delete'])) {
-    $jobId = $_GET['delete'];
-    $result = $databaseOperations->deleteJob("job_postings", $jobId);
+/*
+|--------------------------------------------------------------------------
+| Handle Delete Job
+|--------------------------------------------------------------------------
+*/
+function handleDeleteJob($databaseOperations)
+{
+    if (isset($_GET['delete'])) {
+        $jobId = $_GET['delete'];
+        $result = $databaseOperations->deleteJob("job_postings", $jobId);
 
-    if ($result) {
-        $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'recruiter-posts.php';
-        header("Location: $redirect_url");
-        exit;
+        if ($result) {
+            $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'recruiter-posts.php';
+            header("Location: $redirect_url");
+            exit;
+        } else {
+            global $error_messages;
+            $error_messages['Failed'] = "Failed to delete job.";
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Handle GET Job Search
+|--------------------------------------------------------------------------
+*/
+function handleGetJobSearch($databaseOperations)
+{
+    if (isset($_GET['submit'])) {
+        $keyword = $_GET['keyword'];
+        $category = $_GET['category'];
+        $location = $_GET['location'];
+
+        $conditions = [];
+        if (!empty($keyword)) {
+            $conditions[] = "job.title LIKE '%$keyword%'";
+        }
+        if (!empty($category)) {
+            $conditions[] = "job.category = '$category'";
+        }
+        if (!empty($location)) {
+            $conditions[] = "company.location LIKE '%$location%'";
+        }
+
+        return $databaseOperations->getJobs('job_postings', ['companies:id'], $conditions);
     } else {
-        $error_messages['Failed'] = "Failed to delete job.";
+        return $databaseOperations->getJobs('job_postings', ['companies:id'], []);
     }
 }
 
-if (isset($_GET['submit'])) {
-    $keyword = $_GET['keyword'];
-    $category = $_GET['category'];
-    $location = $_GET['location'];
-
-    $conditions = [];
-    if (!empty($keyword)) {
-        $conditions[] = "job.title LIKE '%$keyword%'";
-    }
-    if (!empty($category)) {
-        $conditions[] = "job.category = '$category'";
-    }
-    if (!empty($location)) {
-        $conditions[] = "company.location LIKE '%$location%'";
-    }
-
-    $results = $databaseOperations->getJobs('job_postings', ['companies:id'], $conditions);
-} else {
-    $conditions = [];
-    $results = $databaseOperations->getJobs('job_postings', ['companies:id'], $conditions);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    handlePostRequest($databaseOperations, $conn);
 }
+
+$jobData = handleGetJobById($databaseOperations);
+handleDeleteJob($databaseOperations);
+$results = handleGetJobSearch($databaseOperations);
