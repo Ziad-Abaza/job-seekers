@@ -58,7 +58,7 @@ include('controller/PostJobController.php');
         <!-- Full Time Jobs -->
         <div class="tab-pane fade" id="tab-2">
             <?php
-            $fullTimeConditions = $conditions;
+            // $fullTimeConditions = $conditions;
             $fullTimeConditions[] = "job.type = 'Full Time'";
             $fullTimeResults = $databaseOperations->getJobs('job_postings', ['companies:id'], $fullTimeConditions);
             displayJobs($fullTimeResults);
@@ -67,7 +67,7 @@ include('controller/PostJobController.php');
         <!-- Part Time Jobs -->
         <div class="tab-pane fade" id="tab-3">
             <?php
-            $partTimeConditions = $conditions;
+            // $partTimeConditions = $conditions;
             $partTimeConditions[] = "job.type = 'Part Time'";
             $partTimeResults = $databaseOperations->getJobs('job_postings', ['companies:id'], $partTimeConditions);
             displayJobs($partTimeResults);
