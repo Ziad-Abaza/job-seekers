@@ -3,7 +3,6 @@ include("database/config.php");
 include("Traits/CrudOperationsTrait.php");
 require 'controller/ErrorHandlerController.php';
 
-
 class DatabaseOperations
 {
     use CrudOperationsTrait;
