@@ -82,7 +82,6 @@ include("controller/ProfileController.php");
                     </div>
                 </form>
                 <?php ErrorHandler::displayErrors($error_messages); ?>
-                <?php ErrorHandler::displayErrors($result); ?>
             </div>
 
         </div>

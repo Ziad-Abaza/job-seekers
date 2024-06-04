@@ -48,6 +48,8 @@ class DatabaseOperations
             $userDetails['social_links'] = $this->fetchSocialLinks($user_id);
             return $userDetails;
         }
+
+        return null;
     }
 
     /*
@@ -219,7 +221,7 @@ function getUserId()
 | handle Post Request
 |--------------------------------------------------------------------------
 */
-function handlePostRequest($databaseOperations, $userId, &$userDetails)
+function handlePostRequest($databaseOperations, $userId, &$userDetails, &$error_messages)
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['name']) && isset($_POST['location']) && isset($_POST['email']) && isset($_POST['phone'])) {
@@ -235,7 +237,9 @@ function handlePostRequest($databaseOperations, $userId, &$userDetails)
             ];
 
             $result = $databaseOperations->validateCompanyFormData($data);
-            if (!$result) {
+            if ($result) {
+                $error_messages = $result;
+            } else {
                 $databaseOperations->updateUserDetails($userId, $_POST['name'], $_POST['location'], $_POST['email'], $_POST['phone'], $_POST['specialization'], $_POST['education'], $_FILES['cv'], $_FILES['image']);
 
                 $userDetails = $databaseOperations->getUserDetails($userId);
@@ -265,10 +269,8 @@ $userId = getUserId();
 $databaseOperations = new DatabaseOperations($conn);
 
 $error_messages = [];
-$result = null;
-
 $userDetails = $databaseOperations->getUserDetails($userId);
 $companyData = $databaseOperations->findCompanyById($userId);
 
-handlePostRequest($databaseOperations, $userId, $userDetails);
+handlePostRequest($databaseOperations, $userId, $userDetails, $error_messages);
 ?>
