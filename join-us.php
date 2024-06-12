@@ -51,7 +51,7 @@ include("controller/Auth/SignupRecruiterController.php");
                     <div class="form-box-section">
                         <input type="file" class="input-field input-form" name="image" id="image" placeholder=" ">
                         <label for="image">Profile Photo</label>
-                        <i class="bx bx-use"></i>
+                        <i class="bx bx-image"></i>
                     </div>
                     <div class="form-box-section">
                         <input type="tel" name="phone" class="input-field input-form" id="phone" placeholder=" ">
@@ -61,6 +61,7 @@ include("controller/Auth/SignupRecruiterController.php");
                     <div class="form-box-section">
                         <input type="submit" class="submit btn btn-primary" name="signup" value="Sign Up">
                     </div>
+                </form>
                     <?php ErrorHandler::displayErrors($error_messages); ?>
                     <?php ErrorHandler::displayErrors($result); ?>
                     <?php 
@@ -68,8 +69,6 @@ include("controller/Auth/SignupRecruiterController.php");
                         ErrorHandler::displayMessage($message); 
                         $_SESSION['reg_message'] = '';
                     ?>
-                </form>
-
             </div>
             <div class="container-fluid bg-dark text-white-50 footer mt-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container">

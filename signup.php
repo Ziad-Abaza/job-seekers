@@ -51,7 +51,7 @@ include("controller/Auth/SignupEmployeeController.php");
                     <div class="form-box-section">
                         <input type="file" class="input-field input-form" name="image" id="image" placeholder=" ">
                         <label for="image">Profile Photo</label>
-                        <i class="bx bx-use"></i>
+                        <i class="bx bx-image"></i>
                     </div>
                     <div class="form-box-section">
                         <input type="tel" name="phone" class="input-field input-form" id="phone" placeholder=" ">
@@ -62,6 +62,7 @@ include("controller/Auth/SignupEmployeeController.php");
                         <input type="submit" class="submit btn btn-primary" name="signup" value="Sign Up">
                     </div>
                 </form>
+
                 <?php ErrorHandler::displayErrors($error_messages); ?>
                 <?php ErrorHandler::displayErrors($result); ?>
                 <?php 
