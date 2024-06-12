@@ -16,6 +16,21 @@ class ErrorHandler
             echo '</div>';
         }
     }
+    public static function displayMessage($message)
+    {
+        if (!empty($message)) {
+            echo '<div class="alert alert-success p-1 m-2 alert-dismissible fade show" role="alert" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="100">';
+            echo '<button type="button" class="btn-close p-2" data-bs-dismiss="alert" aria-label="Close"></button>';
+            if(is_array($message)){
+                foreach ($message as $field => $msg) {
+                    echo "<strong>$field:</strong> $msg<br>";
+                }
+            }else{
+                echo "</strong> $message<br>";
+            }
+            echo '</div>';
+        }
+    }
 }
 
 ?>

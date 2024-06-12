@@ -63,6 +63,11 @@ include("controller/Auth/SignupRecruiterController.php");
                     </div>
                     <?php ErrorHandler::displayErrors($error_messages); ?>
                     <?php ErrorHandler::displayErrors($result); ?>
+                    <?php 
+                        $message = $_SESSION['reg_message'] ?? [];
+                        ErrorHandler::displayMessage($message); 
+                        $_SESSION['reg_message'] = '';
+                    ?>
                 </form>
 
             </div>

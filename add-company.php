@@ -105,6 +105,11 @@ include("Controller/companiesController.php");
                 </form>
                 <?php ErrorHandler::displayErrors($error_messages); ?>
                 <?php ErrorHandler::displayErrors($result); ?>
+                <?php 
+                $message = $_SESSION['reg_message'] ?? [];
+                ErrorHandler::displayMessage($message); 
+                $_SESSION['reg_message'] = '';
+                ?>
             </div>
         </div>
 

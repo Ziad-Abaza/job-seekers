@@ -23,7 +23,7 @@ include("controller/Auth/LoginController.php");
         <div class="form-container">
             <div class="login-container text-center h-100" id="login">
                 <div class="top p-3 m-auto">
-                    <a href="signup.php">Don't have an account?<span></span> Sign Up</a>
+                    <a href="signup.php">Don't have an account?<span class=" text-secondary"> Sign Up</span> </a>
                     <header class="fs-3">Login</header>
                 </div>
                 <form method="post" action="login.php" class="body-form">
@@ -31,9 +31,12 @@ include("controller/Auth/LoginController.php");
                         <input type="email" class="input-field input-field input-form" name="email" placeholder="Username or Email">
                         <i class="bx bx-user"></i>
                     </div>
-                    <div class="form-box-section">
+                    <div class="form-box-section mb-0">
                         <input type="password" name="password" class=" input-field input-form" placeholder="Password">
                         <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="mb-3 text-start">
+                        <a href="forgot-password.php">Forgot your password?</span></a>
                     </div>
                     <div class="form-box-section">
                         <input type="submit" class="submit btn btn-primary" name="submit" value="Sign In">

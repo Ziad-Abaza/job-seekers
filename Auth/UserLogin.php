@@ -40,6 +40,7 @@ class UserLogin
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
+                $_SESSION['user_status'] = $user['status'];
                 return self::LOGIN_SUCCESS;
             } else {
                 return self::INVALID_PASSWORD;

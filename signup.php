@@ -64,6 +64,11 @@ include("controller/Auth/SignupEmployeeController.php");
                 </form>
                 <?php ErrorHandler::displayErrors($error_messages); ?>
                 <?php ErrorHandler::displayErrors($result); ?>
+                <?php 
+                $message = $_SESSION['reg_message'] ?? [];
+                ErrorHandler::displayMessage($message); 
+                $_SESSION['reg_message'] = '';
+                ?>
             </div>
             <!-- footer -->
             <div class="container-fluid bg-dark text-white-50 footer mt-3 wow fadeIn" data-wow-delay="0.1s">

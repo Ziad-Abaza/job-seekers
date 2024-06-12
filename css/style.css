@@ -767,3 +767,44 @@
   transform: translateY(-50%);
   color: #888;
 }
+
+/******************************************************************************* */
+/*                                    mailer                                     */
+/******************************************************************************* */
+
+.email-sender {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: auto;
+}
+.email-sender .email-header {
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+.email-send-body {
+  padding: 20px;
+}
+.email-send-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  font-size: 0.9em;
+  color: #777;
+}
+.btn-sender {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+}
