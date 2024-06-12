@@ -18,7 +18,6 @@ include("controller/DetailsController.php");
         <!-- Navbar -->
         <?php require_once 'components/navbar.php'; ?>
 
-
         <!-- Job Detail -->
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
@@ -76,14 +75,26 @@ include("controller/DetailsController.php");
                                             </div>
                                             <div class="modal-footer d-block">
                                                 <?php if (isset($_SESSION['user_id'])) { ?>
-                                                    <!-- Comment Form -->
-                                                    <form method="POST" action="">
-                                                        <div class="mb-3">
-                                                            <label for="comment" class="form-label">Add a Comment</label>
-                                                            <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                                    <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] == 1) { ?>
+                                                        <!-- Comment Form -->
+                                                        <form method="POST" action="">
+                                                            <div class="mb-3">
+                                                                <label for="comment" class="form-label">Add a Comment</label>
+                                                                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </form>
+                                                    <?php } else { ?>
+                                                        <div class="container mt-4">
+                                                            <div class="row justify-content-center">
+                                                                <div class="col-md-8">
+                                                                    <div class="alert alert-warning text-center" role="alert">
+                                                                        <strong>Attention!</strong> You need to activate your account first to add a comment.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </form>
+                                                    <?php } ?>
                                                 <?php } else { ?>
                                                     <p class="text-muted">You must login to add a comment.</p>
                                                 <?php } ?>
@@ -102,7 +113,7 @@ include("controller/DetailsController.php");
                             <h4 class="mb-4">Company Detail</h4>
                             <img class="flex-shrink-0 img-fluid border rounded mb-2" src="<?php echo $job['company_image']; ?>" alt="" style="width: 80px; height: 80px;">
                             <br>
-                            <a class="m-0 " href="company-detail.php?companyId=<?php echo $job['company_id']; ?>"><span class="fw-bold text-primary">Name:</span> <?php echo $job['company_name']; ?></a>
+                            <a class="m-0" href="company-detail.php?companyId=<?php echo $job['company_id']; ?>"><span class="fw-bold text-primary">Name:</span> <?php echo $job['company_name']; ?></a>
                             <p class="m-0"><span class="fw-bold text-primary">Company Description:</span> <?php echo $job['company_description']; ?></p>
                             <p class="m-0"><span class="fw-bold text-primary">Company Location:</span> <?php echo $job['company_location']; ?></p>
                             <p class="m-0"><span class="fw-bold text-primary">Company Field:</span> <?php echo $job['company_category']; ?></p>
@@ -120,8 +131,11 @@ include("controller/DetailsController.php");
             </div>
         </div>
     </div>
+
     <!-- Footer -->
     <?php require_once 'components/footer.php'; ?>
+
+    <!-- Script -->
     <?php require_once 'components/scripts.php'; ?>
 </body>
 

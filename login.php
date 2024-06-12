@@ -23,7 +23,7 @@ include("controller/Auth/LoginController.php");
         <div class="form-container">
             <div class="login-container text-center h-100" id="login">
                 <div class="top p-3 m-auto">
-                    <a href="signup.php">Don't have an account?<span class=" text-secondary"> Sign Up</span> </a>
+                    <a href="signup.php" class="text-body">Don't have an account?<span class=" text-primary"> Sign Up</span> </a>
                     <header class="fs-3">Login</header>
                 </div>
                 <form method="post" action="login.php" class="body-form">
@@ -45,6 +45,7 @@ include("controller/Auth/LoginController.php");
                 <?php ErrorHandler::displayErrors($error_messages); ?>
                 <?php ErrorHandler::displayErrors($result); ?>
             </div>
+            </div>
             <div class="container-fluid bg-dark text-white-50 footer mt-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container">
                     <div class="copyright">
@@ -63,7 +64,6 @@ include("controller/Auth/LoginController.php");
                     </div>
                 </div>
             </div>
-        </div>
         <?php require_once 'components/scripts.php'; ?>
 </body>
 

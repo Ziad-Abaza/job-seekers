@@ -4,6 +4,7 @@
             <span>Do You Want to Apply For the Job? </span>
             <header class="fs-3">Apply Form</header>
         </div>
+        <?php if(isset($_SESSION['user_status']) && $_SESSION['user_status'] == 1){?>
         <form method="post" action="controller/ApplyController.php" class="body-form w-100" enctype="multipart/form-data">
             <input type="hidden" name="user_id" value="<?php echo isset($user_details['id']) ? $user_details['id'] : $_SESSION['user_id']; ?>">
             <input type="hidden" name="job_posting_id" value="<?php echo isset($id) ? $id : $_GET['jobId']; ?>">
@@ -59,5 +60,16 @@
                 <input type="submit" class="submit btn btn-primary px-5" name="signup" value="Apply Now">
             </div>
         </form>
+        <?php }else{?>
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-warning text-center" role="alert">
+                            <strong>Attention!</strong> You need to activate your account first to apply for the job.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php }?>
     </div>
 </div>
