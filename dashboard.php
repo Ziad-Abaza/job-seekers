@@ -36,7 +36,7 @@
 
             <!-- Main content -->
             <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 main-content" style="min-height: 100vh;" id="main-content">
-                <div class="dashboard-header">Welcome to the Dashboard</div>
+                <div class="dashboard-header d-flex align-items-center justify-content-center"><img src="img/Welcome aboard.gif" alt=""></div>
             </main>
         </div>
 
