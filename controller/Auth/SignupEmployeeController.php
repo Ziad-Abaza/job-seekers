@@ -11,11 +11,12 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-require 'database/config.php';
-require 'Auth/UserRegistration.php';
-require 'Traits/ValidatorTrait.php';
-require 'Traits/HandleFileTrait.php';
-require 'controller/ErrorHandlerController.php';
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../Traits/ValidatorTrait.php');
+include(__DIR__ . '/../Traits/CrudOperationsTrait.php');
+include(__DIR__ . '/../Traits/HandleFileTrait.php');
+include(__DIR__ . '/../controller/ErrorHandlerController.php');
+include(__DIR__ . '/../Auth/UserRegistration.php');
 
 class DatabaseOperations
 {

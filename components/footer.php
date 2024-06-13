@@ -69,4 +69,4 @@
 |--------------------------------------------------------------------------
 -->
 
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top d-flex align-items-center"><i class="bi bi-arrow-up"></i></a>

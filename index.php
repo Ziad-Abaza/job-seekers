@@ -20,9 +20,11 @@
                 <div class="row justify-content-start">
                     <div class="col-10 col-lg-8">
                         <h1 class="display-3 text-white animated slideInDown mb-4">Welcome to Tech Jobs</h1>
-                        <p class="fs-5 fw-medium text-white mb-4 pb-2">Find the perfect job in the field of information technology or discover talented professionals to join your team. Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                        <a href="job-list.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search Jobs</a>
-                        <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Employer Hub</a>
+                        <p class="fs-5 fw-medium text-white mb-4 pb-2 text-nav">Find the perfect job in the field of information technology or discover talented professionals to join your team. Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
+                        <div class="container-nav-btn">
+                            <a href="job-list.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search Jobs</a>
+                            <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Employer Hub</a>
+                        </div>
                     </div>
                 </div>
             </div>

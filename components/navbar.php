@@ -1,10 +1,18 @@
 <?php
 // session_start();
 $logged_in = isset($_SESSION['user_id']);
-$link_url = $logged_in ? "profile.php" : "login.php";
+$user_role = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : '';
+
+if($user_role == 'admin' || $user_role == 'superAdmin' || $user_role == 'editor'){
+    $link_url = 'dashboard.php';
+    $btn_text = 'dashboard';
+} else {
+    $link_url = $logged_in ? "profile.php" : "login.php";
+    $btn_text = $logged_in ? "profile" : "login";
+}
+
 $user_id = $logged_in ? $_SESSION['user_id'] : "";
 $icon_class = $logged_in ? "bi bi-person-circle" : "bi bi-box-arrow-right";
-$btn_text = $logged_in ? "profile" : "login";
 ?>
 
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">

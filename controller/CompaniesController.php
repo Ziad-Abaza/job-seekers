@@ -1,9 +1,9 @@
 <?php
-require 'database/config.php';
-require 'Traits/ValidatorTrait.php';
-require 'Traits/CrudOperationsTrait.php';
-require 'Traits/HandleFileTrait.php';
-require 'ErrorHandlerController.php';
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../Traits/ValidatorTrait.php');
+include(__DIR__ . '/../Traits/CrudOperationsTrait.php');
+include(__DIR__ . '/../Traits/HandleFileTrait.php');
+include(__DIR__ . '/../controller/ErrorHandlerController.php');
 
 class DatabaseOperations
 {

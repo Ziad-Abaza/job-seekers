@@ -1,8 +1,7 @@
 <?php
-
-require '../database/config.php';
-require '../Traits/ValidatorTrait.php';
-require '../Traits/HandleFileTrait.php';
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../Traits/ValidatorTrait.php');
+include(__DIR__ . '/../Traits/HandleFileTrait.php');
 
 class DatabaseOperations
 {

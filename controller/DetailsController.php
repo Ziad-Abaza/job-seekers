@@ -1,7 +1,7 @@
 <?php
-include("database/config.php");
-include("Traits/CrudOperationsTrait.php");
-require 'controller/ErrorHandlerController.php';
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../Traits/CrudOperationsTrait.php');
+include(__DIR__ . '/../controller/ErrorHandlerController.php');
 
 class DatabaseOperations
 {

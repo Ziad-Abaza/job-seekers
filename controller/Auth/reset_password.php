@@ -1,11 +1,13 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'database/config.php';
-require 'controller/ErrorHandlerController.php';
-require './lib/PHPMailer/src/Exception.php';
-require './lib/PHPMailer/src/PHPMailer.php';
-require './lib/PHPMailer/src/SMTP.php';
+
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../lib/PHPMailer/src/Exception.php');
+include(__DIR__ . '/../lib/PHPMailer/src/PHPMailer.php');
+include(__DIR__ . '/../lib/PHPMailer/src/SMTP.php');
+include(__DIR__ . '/../Traits/HandleFileTrait.php');
+include(__DIR__ . '/../controller/ErrorHandlerController.php');
 
 $success_messages = [];
 $error_messages = [];

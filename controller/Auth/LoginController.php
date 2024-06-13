@@ -86,7 +86,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($response === UserLogin::INVALID_PASSWORD) {
             $error_messages['password'] = "Invalid password.";
         } elseif ($response === UserLogin::USER_NOT_FOUND) {
-            $error_messages['email'] = "User not found.";
+            $response = $userLogin->loginUser('admins', $data);
+            if ($response === UserLogin::LOGIN_SUCCESS) {
+                header("Location: index.php");
+                exit;
+            } elseif ($response === UserLogin::INVALID_PASSWORD) {
+                $error_messages['password'] = "Invalid password.";
+            } elseif ($response === UserLogin::USER_NOT_FOUND) {
+                $error_messages['email'] = "User not found.";
+            }
         }
     }
 }

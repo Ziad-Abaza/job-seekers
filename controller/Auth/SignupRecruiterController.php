@@ -5,17 +5,18 @@
 | Redirect If User Already Logged In
 |--------------------------------------------------------------------------
 */
-require 'controller/ErrorHandlerController.php';
 if (isset($_SESSION['user_id'])) {
     $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
     header("Location: $redirect_url");
     exit;
 }
 
-require 'database/config.php';
-require 'Auth/UserRegistration.php';
-require 'Traits/ValidatorTrait.php';
-require 'Traits/HandleFileTrait.php';
+include(__DIR__ . '/../database/config.php');
+include(__DIR__ . '/../Auth/UserRegistration.php');
+include(__DIR__ . '/../Traits/ValidatorTrait.php');
+include(__DIR__ . '/../Traits/CrudOperationsTrait.php');
+include(__DIR__ . '/../Traits/HandleFileTrait.php');
+include(__DIR__ . '/../controller/ErrorHandlerController.php');
 
 class DatabaseOperations
 {

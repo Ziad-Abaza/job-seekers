@@ -39,11 +39,7 @@ $btn_text = $logged_in ? "profile" : "login";
                         <li class="nav-item">
                             <a class="nav-link link-secondary fw-bold fs-6 py-2" href="./recruiter-posts.php">MY Posts</a>
                         </li>
-                    <?php }else if(isset($_SESSION['user_role'])&& $_SESSION['user_status'] == 0){ ?>
-                        <li class="nav-item d-flex align-items-center justify-content-center">
-                        <p class="fs-6 text-danger m-0 px-2">Activate within 24 hours or lose account.</p>
-                        </li>
-                        <?php }?>
+                    <?php }?>
                     <li class="nav-item">
                         <a class="nav-link link-secondary fw-bold fs-6 py-2" href="#"><i class="bi bi-chat-dots-fill"></i> Chats </a>
                     </li>
