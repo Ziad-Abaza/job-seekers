@@ -41,7 +41,7 @@ $btn_text = $logged_in ? "profile" : "login";
                         </li>
                     <?php } ?>
                     <li class="nav-item">
-                        <a class="nav-link link-secondary fw-bold fs-6 py-2" href="#"><i class="bi bi-chat-dots-fill"></i> Chats </a>
+                        <a class="nav-link link-secondary fw-bold fs-6 py-2" href="./chats.php"><i class="bi bi-chat-dots-fill"></i> Chats </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-secondary fw-bold fs-6 py-2" href="#"></a>

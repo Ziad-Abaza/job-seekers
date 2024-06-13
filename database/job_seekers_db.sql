@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2024 at 09:19 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Jun 14, 2024 at 12:53 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -184,6 +184,70 @@ INSERT INTO `job_requirements` (`id`, `title`, `description`, `job_posting_id`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `sender_id` bigint(20) UNSIGNED NOT NULL,
+  `receiver_id` bigint(20) UNSIGNED NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `message`, `created_at`) VALUES
+(18, 1, 4, 'hello', NULL),
+(19, 4, 1, 'hi there', NULL),
+(20, 1, 4, 'jjj', NULL),
+(21, 1, 4, 'fff', NULL),
+(22, 1, 4, 'dfgdfg', NULL),
+(23, 1, 3, 'fff', NULL),
+(24, 4, 2, 'hello', NULL),
+(25, 2, 1, 'hello', NULL),
+(26, 1, 2, 'hey', NULL),
+(27, 1, 2, 'test', NULL),
+(28, 2, 1, 'me', NULL),
+(29, 1, 2, 'dsds', NULL),
+(30, 1, 4, 'fhj', NULL),
+(31, 1, 4, 'hg', NULL),
+(32, 1, 4, 'hg', NULL),
+(33, 1, 4, 'hg', NULL),
+(34, 1, 4, 'hg', NULL),
+(35, 1, 4, 'gh', NULL),
+(36, 1, 4, 'gh', NULL),
+(37, 1, 4, 'gh', NULL),
+(38, 1, 4, 'gh', NULL),
+(39, 1, 4, 'gh', NULL),
+(40, 1, 4, 'gh', NULL),
+(41, 1, 4, 'gh', NULL),
+(42, 1, 4, 'gh', NULL),
+(43, 1, 4, 'gh', NULL),
+(44, 1, 4, 'fghgfh', NULL),
+(45, 1, 4, 'jjj', NULL),
+(46, 1, 4, 'j', NULL),
+(47, 1, 4, 'j', NULL),
+(48, 1, 4, 'j', NULL),
+(49, 1, 4, 'j', NULL),
+(50, 1, 4, 'j', NULL),
+(51, 1, 4, 'j', NULL),
+(52, 1, 4, 'j', NULL),
+(53, 4, 1, 'hello', NULL),
+(54, 1, 4, 'hey there', NULL),
+(55, 4, 1, 'ggggg', NULL),
+(56, 4, 1, 'nnn', NULL),
+(57, 3, 2, 'hey', NULL),
+(58, 2, 3, 'hello', NULL),
+(59, 3, 2, 'this is a live chat', NULL),
+(60, 2, 3, 'yeah im the programmer', NULL),
+(61, 3, 2, 'me too buddy', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `social_links`
 --
 
@@ -250,7 +314,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`, `image
 (1, 'John Doe', 'john.doe@example.com', '$2y$10$AV8NfbM0kW4Vx62O5klFZ.et/1iaFd2qB5mL/a48yZ27pSZNkYPmS', 'employee', 1, 'img/profile_picture.png', '01500403927', 1, '2024-05-05 10:35:42', '2024-05-05 10:35:42'),
 (2, 'Jane Smith', 'jane.smith@example.com', '$2y$10$AV8NfbM0kW4Vx62O5klFZ.et/1iaFd2qB5mL/a48yZ27pSZNkYPmS', 'recruiter', 1, 'img/profile_picture.png', '01206403927', 2, '2024-05-05 10:35:42', '2024-05-05 10:35:42'),
 (3, 'Michael Johnson', 'michael.johnson@example.com', '$2y$10$AV8NfbM0kW4Vx62O5klFZ.et/1iaFd2qB5mL/a48yZ27pSZNkYPmS', 'employee', 1, 'img/profile_picture.png', '01006805927', 3, '2024-05-05 10:35:42', '2024-05-05 10:35:42'),
-(4, 'ziad hassan', 'ziadabaza12345@gmail.com', '$2y$10$zuos77XvdBj.tA/jJio4q.7F4Iloz/8gAcFHcP8lAAIDPEc4GAXIO', 'recruiter', 1, 'img/66425a1643cd9_ziad_hassan.jpg', '01006403927', NULL, NULL, NULL);
+(4, 'ziad hassan', 'ziadabaza12345@gmail.com', '$2y$10$AV8NfbM0kW4Vx62O5klFZ.et/1iaFd2qB5mL/a48yZ27pSZNkYPmS', 'recruiter', 1, 'img/66425a1643cd9_ziad_hassan.jpg', '01006403927', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,6 +391,14 @@ ALTER TABLE `job_requirements`
   ADD KEY `job_requirements_job_posting_id_foreign` (`job_posting_id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sender_id` (`sender_id`),
+  ADD KEY `receiver_id` (`receiver_id`);
+
+--
 -- Indexes for table `social_links`
 --
 ALTER TABLE `social_links`
@@ -388,6 +460,12 @@ ALTER TABLE `job_requirements`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
+--
 -- AUTO_INCREMENT for table `social_links`
 --
 ALTER TABLE `social_links`
@@ -441,6 +519,13 @@ ALTER TABLE `job_postings`
 --
 ALTER TABLE `job_requirements`
   ADD CONSTRAINT `job_requirements_job_posting_id_foreign` FOREIGN KEY (`job_posting_id`) REFERENCES `job_postings` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `social_links`
