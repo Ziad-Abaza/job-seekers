@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+if (!isset($_SESSION['user_role']) || !in_array($_SESSION['user_role'], ['superAdmin', 'admin', 'editor'])) {
+    header('Location: index.php');
+    exit(); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

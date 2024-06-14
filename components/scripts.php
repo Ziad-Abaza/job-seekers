@@ -6,6 +6,7 @@
     <script src="./lib/waypoints/waypoints.min.js"></script>
     <script src="./lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="./js/bootstrap.js"></script>
+    <script src="./js/dashboard.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/jquery-3.5.1.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->

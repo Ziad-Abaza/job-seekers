@@ -6,37 +6,14 @@ function fetchUsers($conn) {
     $sql = "SELECT id, name, email, role, status, phone, image, created_at FROM users";
     $result = $conn->query($sql);
 
-    $users = [];
+    $data = [];
     if ($result->num_rows > 0) {
         // Fetch data for each row
         while($row = $result->fetch_assoc()) {
-            $users[] = $row;
+            $data[] = $row;
         }
     }
-    return $users;
-}
-
-// Delete user if POST request is received
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-    $userId = $data['user_id'];
-
-    if ($userId) {
-        $sql = "DELETE FROM users WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $userId);
-
-        if ($stmt->execute()) {
-            echo "User deleted successfully";
-        } else {
-            echo "Error deleting user: " . $conn->error;
-        }
-
-        $stmt->close();
-    } else {
-        echo "Invalid user ID";
-    }
-    exit;
+    return $data;
 }
 
 $users = fetchUsers($conn);
@@ -51,12 +28,12 @@ $conn->close();
                     <div class="card h-100">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid border rounded-circle" src="<?php echo $user['image']; ?>" alt="" style="width: 50px; height: 50px;">
+                            <img class="img-fluid border rounded-circle" src="<?php echo $user['image']; ?>" alt="" style="width: 50px; height: 50px;">
                                 <div class="ms-3">
                                     <h5 class="card-title mb-1">
                                         <i class="fas fa-user text-primary"></i> <?php echo $user['name']; ?>
                                     </h5>
-                                    <p class="card-text mb-0">
+                                    <p class="card-text mb-0 email-user-card">
                                         <i class="fas fa-envelope text-primary"></i> <?php echo $user['email']; ?>
                                     </p>
                                     <p class="card-text mb-0">
