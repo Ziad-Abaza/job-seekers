@@ -831,6 +831,18 @@
   font-weight: 900;
   }
 
+#all-jobs{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#all-jobs{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 @media (max-width: 780px) {
   .btn-hover {
         padding: 1em 1.2em;

@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . '/../database/config.php');
-include(__DIR__ . '/../controller/ErrorHandlerController.php');
+include('./database/config.php');
+include('./controller/ErrorHandlerController.php');
 
 $success_messages = [];
 $error_messages = [];
