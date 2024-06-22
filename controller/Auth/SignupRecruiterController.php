@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $imageTmp = $_FILES['image']['tmp_name'];
         $imagePath = $databaseOperations->saveImage($imageTmp, $_FILES['image']['name']);
     } else {
-        $imagePath = "img/profile_picture.pngZ";
+        $imagePath = "img/profile_picture.png";
     }
     $data = [
         "name" => $name,

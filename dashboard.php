@@ -33,9 +33,9 @@ if (!isset($_SESSION['user_role']) || !in_array($_SESSION['user_role'], ['superA
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('Dashboard/companies.php', this)">Companies</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('Dashboard/permissions.php', this)">Permissions</a>
-                        </li>
+                        <!-- <li class="nav-item"> -->
+                            <!-- <a class="nav-link" href="#" onclick="loadContent('Dashboard/permissions.php', this)">Permissions</a> -->
+                        <!-- </li> -->
                     </ul>
                 </div>
             </nav>

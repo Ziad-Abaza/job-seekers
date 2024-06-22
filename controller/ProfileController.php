@@ -272,4 +272,3 @@ $userDetails = $databaseOperations->getUserDetails($userId);
 $companyData = $databaseOperations->findCompanyById($userId);
 
 handlePostRequest($databaseOperations, $userId, $userDetails, $error_messages);
-?>

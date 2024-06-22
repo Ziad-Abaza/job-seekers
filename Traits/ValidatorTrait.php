@@ -2,40 +2,40 @@
 
 trait ValidatorTrait
 {
-/*
-|--------------------------------------------------------------------------
-| Validate Request Data Function
-|--------------------------------------------------------------------------
-*/
-public function validateRequestData($request, $rules)
-{
-    $errors = $this->makeValidator($request, $rules)->errors;
+    /*
+    |--------------------------------------------------------------------------
+    | Validate Request Data Function
+    |--------------------------------------------------------------------------
+    */
+    public function validateRequestData($request, $rules)
+    {
+        $errors = $this->makeValidator($request, $rules)->errors;
 
-    if (!empty($errors)) {
-        return $errors;
-    }
-
-    return null;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Make Validator Function
-|--------------------------------------------------------------------------
-*/
-private function makeValidator($data, $rules)
-{
-    $validator = new stdClass();
-    $validator->errors = [];
-
-    foreach ($rules as $field => $rule) {
-        if (!isset($data[$field]) || !$this->validateField($data[$field], $rule)) {
-            $validator->errors[$field] = "The $field field is invalid.";
+        if (!empty($errors)) {
+            return $errors;
         }
+
+        return null;
     }
 
-    return $validator;
-}
+    /*
+    |--------------------------------------------------------------------------
+    | Make Validator Function
+    |--------------------------------------------------------------------------
+    */
+    private function makeValidator($data, $rules)
+    {
+        $validator = new stdClass();
+        $validator->errors = [];
+
+        foreach ($rules as $field => $rule) {
+            if (!isset($data[$field]) || !$this->validateField($data[$field], $rule)) {
+                $validator->errors[$field] = "The $field field is invalid.";
+            }
+        }
+
+        return $validator;
+    }
 
     /*
     |--------------------------------------------------------------------------
