@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("controller/DetailsController.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +78,8 @@ include("controller/DetailsController.php");
                                                 <?php if (isset($_SESSION['user_id'])) { ?>
                                                     <?php if (isset($_SESSION['user_status']) && $_SESSION['user_status'] == 1) { ?>
                                                         <!-- Comment Form -->
-                                                        <form method="POST" action="">
+                                                        <form id="commentForm">
+                                                            <input type="hidden" name="job_id" value="<?php echo $job['id']; ?>">
                                                             <div class="mb-3">
                                                                 <label for="comment" class="form-label">Add a Comment</label>
                                                                 <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
@@ -140,3 +142,4 @@ include("controller/DetailsController.php");
 </body>
 
 </html>
+<script src="js/comments.js"></script>
