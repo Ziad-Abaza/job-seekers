@@ -2,7 +2,7 @@
 session_start();
 include("Controller/companiesController.php");
 ?>
-
+<?php require_once 'components/navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +31,8 @@ include("Controller/companiesController.php");
                         <i class="bx bx-user"></i>
                     </div>
                     <div class="form-box-section">
-                        <input type="text" class="input-field input-form" name="description" id="description" placeholder=" ">
+                        <input type="text" class="input-field input-form" name="description" id="description"
+                            placeholder=" ">
                         <label for="description">Description</label>
                         <i class="bx bx-user"></i>
                     </div>
@@ -81,7 +82,7 @@ include("Controller/companiesController.php");
                             <option value="Sohag">Sohag</option>
                             <option value="South Sinai">South Sinai</option>
                             <option value="Suez">Suez</option>
-                        </select> 
+                        </select>
                         <!-- <i class="bi bi-geo-alt-fill"></i> -->
                     </div>
                     <div class="form-box-section">

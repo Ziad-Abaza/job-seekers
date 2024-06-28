@@ -1,3 +1,4 @@
+<!-- This profile page  -->
 <?php
 session_start();
 include("controller/ProfileController.php");
@@ -27,124 +28,138 @@ include("controller/ProfileController.php");
         <div class="container-xxl py-5">
             <div class="container">
                 <?php if ($userDetails) : ?>
-                    <div class="row g-4">
+                <div class="row g-4">
+                    <div class="col-12">
                         <div class="col-12">
                             <div class="col-12">
-                                <div class="col-12">
-                                    <div class="d-flex flex-column flex-md-row align-items-md-center mb-5">
-                                        <?php if (isset($userDetails['image'])) : ?>
-                                            <img class="flex-shrink-0 img-fluid border rounded mb-3 mb-md-0 me-md-4" src="<?php echo $userDetails['image']; ?>" alt="" style="width: 80px; height: 80px;">
+                                <div class="d-flex flex-column flex-md-row align-items-md-center mb-5">
+                                    <?php if (isset($userDetails['image'])) : ?>
+                                    <img class="flex-shrink-0 img-fluid border rounded mb-3 mb-md-0 me-md-4"
+                                        src="<?php echo $userDetails['image']; ?>" alt=""
+                                        style="width: 80px; height: 80px;">
+                                    <?php endif; ?>
+                                    <div class="text-start">
+                                        <?php if (isset($userDetails['name'])) : ?>
+                                        <h3 class="mb-3"><?php echo $userDetails['name']; ?></h3>
                                         <?php endif; ?>
-                                        <div class="text-start">
-                                            <?php if (isset($userDetails['name'])) : ?>
-                                                <h3 class="mb-3"><?php echo $userDetails['name']; ?></h3>
-                                            <?php endif; ?>
-                                            <?php if (isset($userDetails['location'])) : ?>
-                                                <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $userDetails['location']; ?></span>
-                                            <?php endif; ?>
-                                            <?php if (isset($userDetails['email'])) : ?>
-                                                <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i class="far fa-envelope fs-6 text-primary me-2"></i><?php echo $userDetails['email']; ?></span>
-                                            <?php endif; ?>
-                                            <?php if (isset($userDetails['specialization'])) : ?>
-                                                <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i class="fa fa-certificate text-primary me-2"></i><?php echo $userDetails['specialization']; ?></span>
-                                            <?php endif; ?>
-                                            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $userId) : ?>
-                                                <a href="edit-profile.php" class="btn btn-primary btn-sm mt-2">Edit Profile</a>
-                                            <?php endif; ?>
+                                        <?php if (isset($userDetails['location'])) : ?>
+                                        <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i><?php echo $userDetails['location']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (isset($userDetails['email'])) : ?>
+                                        <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i
+                                                class="far fa-envelope fs-6 text-primary me-2"></i><?php echo $userDetails['email']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (isset($userDetails['specialization'])) : ?>
+                                        <span class="d-block text-truncate mb-2" style="font-size: 14px;"><i
+                                                class="fa fa-certificate text-primary me-2"></i><?php echo $userDetails['specialization']; ?></span>
+                                        <?php endif; ?>
+                                        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] === $userId) : ?>
+                                        <a href="edit-profile.php" class="btn btn-primary btn-sm mt-2">Edit Profile</a>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gy-4">
+                                <?php if (isset($userDetails['location'])) : ?>
+                                <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="d-flex align-items-center bg-light rounded p-4">
+                                        <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                                            style="width: 45px; height: 45px;">
+                                            <i class="fa fa-map-marker-alt text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-0">Location</h5>
+                                            <span><?php echo $userDetails['location']; ?></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row gy-4">
-                                    <?php if (isset($userDetails['location'])) : ?>
-                                        <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                                            <div class="d-flex align-items-center bg-light rounded p-4">
-                                                <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
-                                                    <i class="fa fa-map-marker-alt text-primary"></i>
-                                                </div>
-                                                <div>
-                                                    <h5 class="mb-0">Location</h5>
-                                                    <span><?php echo $userDetails['location']; ?></span>
-                                                </div>
+                                <?php endif; ?>
+                                <?php if (isset($userDetails['email'])) : ?>
+                                <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+                                    <a href="mailto:<?php echo $userDetails['email']; ?>" class="text-decoration-none">
+                                        <div class="d-flex align-items-center bg-light rounded p-4">
+                                            <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                                                style="width: 45px; height: 45px;">
+                                                <i class="far fa-envelope text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">Email</h5>
+                                                <span>Send Message<span>
                                             </div>
                                         </div>
-                                    <?php endif; ?>
-                                    <?php if (isset($userDetails['email'])) : ?>
-                                        <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                                            <a href="mailto:<?php echo $userDetails['email']; ?>" class="text-decoration-none">
-                                                <div class="d-flex align-items-center bg-light rounded p-4">
-                                                    <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
-                                                        <i class="far fa-envelope text-primary"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="mb-0">Email</h5>
-                                                        <span>Send Message<span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if (isset($userDetails['phone'])) : ?>
-                                        <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
-                                            <a href="tel:<?php echo $userDetails['phone']; ?>" class="text-decoration-none">
-                                                <div class="d-flex align-items-center bg-light rounded p-4">
-                                                    <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
-                                                        <i class="fa fa-phone-alt text-primary"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5 class="mb-0">Phone</h5>
-                                                        <span><?php echo $userDetails['phone']; ?></span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    <?php endif; ?>
+                                    </a>
                                 </div>
-                                <div class="row w-100 justify-content-between mt-5" style="margin:auto;">
-                                    <?php if (isset($userDetails['social_links'])) : ?>
-                                        <div class="section col-md-4 col-12 mt-2">
-                                            <h3 class="section-title ps-3">Social Links</h3>
-                                            <div class="row gy-4">
-                                                <div class="col-md-12 p-3">
-                                                    <div class="social-link bg-light rounded p-4 d-flex align-items-center justify-content-evenly shadow rounded-5 " style="min-height:120px; height:fit-content;">
-                                                        <?php foreach ($userDetails['social_links'] as $link) : ?>
-                                                            <a href="<?php echo $link['url']; ?>" target="_blank" class="text-decoration-none">
-                                                                <i class="bi bi-<?php echo $link['name']; ?> text-primary me-3 fs-1 "></i>
-                                                            </a>
-                                                        <?php endforeach; ?>
-                                                    </div>
-                                                </div>
-                                            <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if (isset($userDetails['phone'])) : ?>
+                                <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
+                                    <a href="tel:<?php echo $userDetails['phone']; ?>" class="text-decoration-none">
+                                        <div class="d-flex align-items-center bg-light rounded p-4">
+                                            <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                                                style="width: 45px; height: 45px;">
+                                                <i class="fa fa-phone-alt text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">Phone</h5>
+                                                <span><?php echo $userDetails['phone']; ?></span>
                                             </div>
                                         </div>
-                                        <?php if (isset($userDetails['cv'])) : ?>
-                                            <div class="section col-md-4 col-12 mt-2">
-                                                <h3 class="section-title ps-3">Download CV</h3>
-                                                <div class="row gy-4">
-                                                    <div class="col-md-12 p-3">
-                                                        <div class="cv-download bg-light rounded p-4 d-flex align-items-center shadow rounded-5 " style="min-height:120px; height:fit-content;">
-                                                            <i class="fa fa-file-download text-primary me-3"></i>
-                                                            <a href="<?php echo $userDetails['cv']; ?>" class="btn btn-primary btn-sm">Download</a>
-                                                        </div>
-                                                    </div>
-                                                <?php endif; ?>
-                                                </div>
+                                    </a>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="row w-100 justify-content-between mt-5" style="margin:auto;">
+                                <?php if (isset($userDetails['social_links'])) : ?>
+                                <div class="section col-md-4 col-12 mt-2">
+                                    <h3 class="section-title ps-3">Social Links</h3>
+                                    <div class="row gy-4">
+                                        <div class="col-md-12 p-3">
+                                            <div class="social-link bg-light rounded p-4 d-flex align-items-center justify-content-evenly shadow rounded-5 "
+                                                style="min-height:120px; height:fit-content;">
+                                                <?php foreach ($userDetails['social_links'] as $link) : ?>
+                                                <a href="<?php echo $link['url']; ?>" target="_blank"
+                                                    class="text-decoration-none">
+                                                    <i
+                                                        class="bi bi-<?php echo $link['name']; ?> text-primary me-3 fs-1 "></i>
+                                                </a>
+                                                <?php endforeach; ?>
                                             </div>
-                                            <?php if (isset($userDetails['specialization'])) : ?>
-                                                <div class="section col-md-4 col-12 mt-2">
-                                                    <h3 class="section-title ps-3">Specialization</h3>
-                                                    <div class="row gy-4">
-                                                        <div class="col-md-12 p-3">
-                                                            <div class="specialization bg-light rounded p-4 d-flex align-items-center shadow rounded-5 " style="min-height:120px; height:fit-content;">
-                                                                <i class="fa fa-certificate text-primary me-3"></i>
-                                                                <h5><?php echo $userDetails['specialization']; ?></h5>
-                                                            </div>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php if (isset($userDetails['cv'])) : ?>
+                                <div class="section col-md-4 col-12 mt-2">
+                                    <h3 class="section-title ps-3">Download CV</h3>
+                                    <div class="row gy-4">
+                                        <div class="col-md-12 p-3">
+                                            <div class="cv-download bg-light rounded p-4 d-flex align-items-center shadow rounded-5 "
+                                                style="min-height:120px; height:fit-content;">
+                                                <i class="fa fa-file-download text-primary me-3"></i>
+                                                <a href="<?php echo $userDetails['cv']; ?>"
+                                                    class="btn btn-primary btn-sm">Download</a>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <?php if (isset($userDetails['specialization'])) : ?>
+                                <div class="section col-md-4 col-12 mt-2">
+                                    <h3 class="section-title ps-3">Specialization</h3>
+                                    <div class="row gy-4">
+                                        <div class="col-md-12 p-3">
+                                            <div class="specialization bg-light rounded p-4 d-flex align-items-center shadow rounded-5 "
+                                                style="min-height:120px; height:fit-content;">
+                                                <i class="fa fa-certificate text-primary me-3"></i>
+                                                <h5><?php echo $userDetails['specialization']; ?></h5>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
-                            <?php
+                        </div>
+                        <?php
                             if ($userDetails['role'] === 'recruiter') {
                                 echo '<h4 class="mt-4 mb-3">companies</h4>';
                                 foreach ($companyData as $company) {
@@ -177,7 +192,7 @@ include("controller/ProfileController.php");
                                 }
                             }
                             ?>
-                            <?php
+                        <?php
                             if ($userDetails['role'] === 'recruiter') {
                                 echo '<h4 class="mt-4 mb-3">Jobs Posted</h4>';
                                 foreach ($companyData as $company) {
@@ -210,14 +225,14 @@ include("controller/ProfileController.php");
                                 }
                             }
                             ?>
-                        </div>
                     </div>
+                </div>
             </div>
 
         </div>
-    <?php endif; ?>
-    <!-- footer -->
-    <?php require_once 'components/footer.php'; ?>
+        <?php endif; ?>
+        <!-- footer -->
+        <?php require_once 'components/footer.php'; ?>
     </div>
     <!-- script -->
     <?php require_once 'components/scripts.php'; ?>

@@ -113,7 +113,13 @@ class DatabaseOperations
     | update User Details
     |--------------------------------------------------------------------------
     */
-    public function updateUserDetails($user_id, $name, $location, $email, $phone, $specialization, $education, $cv, $image)
+    
+
+        $stmt = $this->connection->prepare($sql);
+        $name = ""
+        $stmt->bind_param("ssssssssi", $name, $location, $email, $phone, $specialization, $education, $pathCV, $pathImage, $user_id);
+        $stmt->execute();
+        public function updateUserDetails($user_id, $name, $location, $email, $phone, $specialization, $education, $cv, $image)
     {
         $pathCV = isset($cv['tmp_name']) ? $this->uploadFiles($cv['tmp_name'], $cv['name'], 'cv') : null;
         $pathImage = isset($image['tmp_name']) ? $this->uploadFiles($image['tmp_name'], $image['name'], 'image') : null;
@@ -123,10 +129,6 @@ class DatabaseOperations
                 SET users.name = ?, user_details.location = ?, users.email = ?, users.phone = ?, 
                 user_details.specialization = ?, user_details.education = ?, user_details.cv = ?, users.image = ?
                 WHERE users.id = ?";
-
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bind_param("ssssssssi", $name, $location, $email, $phone, $specialization, $education, $pathCV, $pathImage, $user_id);
-        $stmt->execute();
     }
 
     /*
@@ -154,6 +156,7 @@ class DatabaseOperations
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i", $user_id);
         $stmt->execute();
+        $vina = ""
     }
 
     /*
