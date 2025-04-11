@@ -1,7 +1,3 @@
-Sure, here's a revised version of the README.md file:
-
----
-
 # Tech Jobs Website
 
 Tech Jobs Website is a job portal focusing on technology-related positions. It allows users to search for jobs in various technology fields such as development, UI/UX design, app development, web development, software development, database administration, network engineering, embedded systems, and Internet of Things (IoT). Employers can also search for talented professionals to join their teams.
@@ -63,6 +59,3 @@ Tech Jobs Website is a job portal focusing on technology-related positions. It a
 
 - Contributions are welcome! Feel free to fork the repository and submit pull requests with improvements or bug fixes.
 
----
-
-This README.md provides an overview of the Tech Jobs Website project, how to run it, explanations of key code components, and information on contributing and licensing.
