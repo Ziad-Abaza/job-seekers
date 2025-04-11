@@ -2,7 +2,7 @@
 
 Welcome to **Tech Jobs Website**, a comprehensive job portal designed specifically for technology-related positions. This platform allows job seekers in various tech fields such as development, UI/UX design, app development, web development, database administration, network engineering, embedded systems, and IoT to find job opportunities. Employers can also use the platform to find top tech talent for their teams.
 
-![Tech Jobs Website Screenshot](screenshots/screenshot.jpeg)
+![Tech Jobs Website Screenshot](/screenshots/screenshot.jpeg)
 
 ---
 
