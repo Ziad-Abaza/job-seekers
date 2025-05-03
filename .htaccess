@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+# If the requested file does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# If the requested directory does not exist
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite to 404.php
+RewriteRule ^(.*)$ 404.php [L]
+
+# Path: .htaccess
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} ^www\.example\.com [NC]
+RewriteRule ^(.*)$ http://example.com/$1 [L,R=301]

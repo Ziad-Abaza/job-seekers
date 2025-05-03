@@ -1,0 +1,92 @@
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f0f4f8;
+    }
+
+/*****************************  login  *****************************/
+
+.login-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-header h3 {
+  color: #26577c;
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #26577c;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #1b4a6b;
+}
+
+.form-control:focus {
+  border-color: #26577c;
+  box-shadow: 0 0 0 0.2rem rgba(38, 87, 124, 0.25);
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/*****************************  dashboard - main  *****************************/
+
+.dashboard-welcome {
+  margin-top: 50px;
+}
+
+.dashboard-welcome h2 {
+  color: #26577c;
+  font-weight: bold;
+}
+
+.dashboard-welcome p {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/*****************************  user  *****************************/
+    .card-user {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+    }
+/*****************************  question  *****************************/
+    .question-card {
+      transition: transform 0.2s ease;
+    }
+
+    .question-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .exam-card:hover {
+      background-color: #f1f5f9;
+      cursor: pointer;
+    }
+
+/*****************************  question  *****************************/
+
+
+
